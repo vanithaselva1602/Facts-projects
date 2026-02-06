@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Facts App</title>
+</head>
+<body>
+
+    <h1>Facts List</h1>
+    <ul id="facts"></ul>
+
+    <script>
+        fetch("http://127.0.0.1:5000/api/facts")
+        .then(response => response.json())
+        .then(data => {
+            const list = document.getElementById("facts");
+
+            data.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = item.fact;
+                list.appendChild(li);
+            });
+        })
+        .catch(error => {
+            console.log("Error:", error);
+        });
+    </script>
+
+</body>
+</html>
