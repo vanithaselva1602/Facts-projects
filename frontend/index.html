@@ -9,21 +9,19 @@
     <ul id="facts"></ul>
 
     <script>
-        fetch("http://127.0.0.1:5000/api/facts")
+        fetch("https://facts-projects.onrender.com/api/facts")
         .then(response => response.json())
         .then(data => {
-            const list = document.getElementById("facts");
+            const list = document.getElementById("facts-list");
 
-            data.forEach(item => {
-                const li = document.createElement("li");
-                li.textContent = item.fact;
-                list.appendChild(li);
-            });
-        })
-        .catch(error => {
-            console.log("Error:", error);
-        });
-    </script>
+            list.innerHTML = "";
+    data.forEach(fact => {
+      const li = document.createElement("li");
+      li.textContent = fact.fact;
+      list.appendChild(li);
+    });
+  });
+</script>
 
 </body>
 </html>
