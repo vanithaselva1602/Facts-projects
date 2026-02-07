@@ -6,20 +6,22 @@
 <body>
 
     <h1>Facts List</h1>
-    <ul id="facts"></ul>
+    <ul id="facts-list"></ul>
 
     <script>
-        fetch("https://facts-projects.onrender.com/api/facts")
-        .then(response => response.json())
-        .then(data => {
-            const list = document.getElementById("facts-list");
-
-            list.innerHTML = "";
+fetch("https://facts-projects.onrender.com/api/facts")
+  .then(response => response.json())
+  .then(data => {
+    const list = document.getElementById("facts-list");
+    list.innerHTML = "";  // clear any old content
     data.forEach(fact => {
       const li = document.createElement("li");
       li.textContent = fact.fact;
       list.appendChild(li);
     });
+  })
+  .catch(error => {
+    console.error("Error fetching facts:", error);
   });
 </script>
 
